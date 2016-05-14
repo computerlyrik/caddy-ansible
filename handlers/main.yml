@@ -2,6 +2,9 @@
 # handlers file for caddy-ansible
 - name: Restart Caddy
   service: name=caddy state=restarted
+# TODO enable when https://github.com/mholt/caddy/issues/821 is solved
+#  environment:
+#    HOME: "{{ caddy_home }}"
 
 - name: Reload systemd service file
   command: systemctl daemon-reload

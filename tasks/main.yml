@@ -67,6 +67,16 @@
   when: not caddy_init_system or caddy_init_system == "systemd"
   notify: Reload systemd service file
 
+# TODO enable when https://github.com/mholt/caddy/issues/821 is solved
+#- name: Systemd service | set HOME
+#  lineinfile: 
+#    state: present
+#    dest: /etc/systemd/system/caddy.service
+#    regexp: '^Environment\=HOME\='
+#    line: "Environment=HOME={{ caddy_home }}"
+#  when: not caddy_init_system or caddy_init_system == "systemd"
+#  notify: Reload systemd service file
+
 - name: Systemd service | fix port permission error
   lineinfile: 
     state: absent
